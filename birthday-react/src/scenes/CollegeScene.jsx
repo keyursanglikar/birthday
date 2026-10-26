@@ -99,20 +99,25 @@ export const CollegeScene = ({ onNext }) => {
       <div
         style={{
           position: 'absolute',
-          top: '16px',
+          top: '20px',
           left: '50%',
           transform: 'translateX(-50%)',
-          background: 'rgba(53, 16, 33, 0.85)',
-          backdropFilter: 'blur(8px)',
-          border: '1px solid rgba(246, 213, 138, 0.4)',
-          borderRadius: '20px',
-          padding: '4px 14px',
+          textAlign: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(53, 16, 33, 0.88)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(246, 213, 138, 0.5)',
+          borderRadius: '24px',
+          padding: '6px 18px',
           color: '#F6D58A',
-          fontSize: '12px',
-          fontWeight: 600,
+          fontSize: '13px',
+          fontWeight: 700,
           letterSpacing: '0.08em',
-          zIndex: 6,
-          boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+          zIndex: 10,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+          whiteSpace: 'nowrap'
         }}
       >
         🏫 DNYANSHREE INSTITUTE
@@ -124,14 +129,15 @@ export const CollegeScene = ({ onNext }) => {
         className="script"
         style={{
           position: 'absolute',
-          top: '7%',
+          top: '68px',
           left: 0,
           right: 0,
           textAlign: 'center',
-          fontSize: 'clamp(32px, 7vw, 44px)',
+          fontSize: 'clamp(28px, 6.5vw, 42px)',
           color: '#fff',
-          textShadow: '0 2px 14px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 77, 141, 0.7)',
-          zIndex: 6
+          textShadow: '0 2px 14px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 77, 141, 0.7)',
+          zIndex: 6,
+          padding: '0 12px'
         }}
       >
         Where our story began… 🎓

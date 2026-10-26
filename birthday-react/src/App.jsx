@@ -109,12 +109,12 @@ export default function App() {
         {/* Particle Canvas Overlay */}
         <ParticleCanvas enabled={true} count={35} />
 
-        {/* Scene Progress Indicator */}
-        <StoryProgress
+        {/* Scene Progress Indicator - hide section number per user request */}
+        {/* <StoryProgress
           currentScene={sceneIndex}
           totalScenes={scenes.length}
           onSelectScene={changeScene}
-        />
+        /> */}
 
         {/* Background "Tum Se Hi" Audio Player (Buttons hidden, pauses automatically during video) */}
         <MusicPlayer
