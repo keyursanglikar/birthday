@@ -332,69 +332,104 @@ export const BalloonScene = ({ onNext }) => {
             animation: 'heartFloat 2s ease-in-out infinite'
           }}
         >
-          {/* Realistic 3D Heart Balloon with Knot & String */}
+          {/* Realistic 3D True Heart Foil Balloon */}
           <div
             style={{
               position: 'relative',
-              width: 'clamp(170px, 32vw, 230px)',
-              height: 'clamp(160px, 30vw, 220px)',
+              width: 'clamp(210px, 36vw, 270px)',
+              height: 'clamp(200px, 34vw, 250px)',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center'
+              alignItems: 'center',
+              filter: 'drop-shadow(0 20px 45px rgba(225, 29, 72, 0.65)) drop-shadow(0 0 25px rgba(246, 213, 138, 0.75))'
             }}
           >
-            {/* 3D Heart Body */}
-            <div
+            {/* SVG True Heart Balloon Shape with Gradient Shimmer & Radial Highlights */}
+            <svg
+              viewBox="0 0 200 185"
               style={{
                 width: '100%',
                 height: '100%',
-                borderRadius: '50% 50% 50% 50% / 40% 40% 60% 60%',
-                background: 'radial-gradient(circle at 35% 30%, #ff8da1, #e11d48, #881337)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 25px 70px rgba(225,29,72,0.7), 0 0 55px rgba(246, 213, 138, 0.65)',
-                border: '3px solid rgba(246, 213, 138, 0.95)',
-                position: 'relative'
+                overflow: 'visible'
               }}
             >
-              {/* Gloss Arc Reflection */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '15%',
-                  left: '20%',
-                  width: '28%',
-                  height: '35%',
-                  borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.75)',
-                  transform: 'rotate(-25deg)',
-                  filter: 'blur(1px)'
-                }}
-              />
-              <span style={{ fontSize: 'clamp(3.5rem, 7vw, 5rem)', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}>
-                💖
-              </span>
-            </div>
+              <defs>
+                <linearGradient id="heartFoilGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+                  <stop offset="0%" stopColor="#ff9ebb" />
+                  <stop offset="25%" stopColor="#f43f5e" />
+                  <stop offset="65%" stopColor="#be123c" />
+                  <stop offset="100%" stopColor="#881337" />
+                </linearGradient>
 
-            {/* Balloon Knot */}
+                <radialGradient id="heartHighlight" cx="35%" cy="30%" r="45%">
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 0.85)" />
+                  <stop offset="40%" stopColor="rgba(255, 255, 255, 0.25)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+                </radialGradient>
+
+                <linearGradient id="heartGoldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFF2B2" />
+                  <stop offset="50%" stopColor="#F6D58A" />
+                  <stop offset="100%" stopColor="#B47712" />
+                </linearGradient>
+
+                <filter id="glowFoil">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              {/* Heart Balloon Foil Body */}
+              <path
+                d="M100,170 C100,170 12,115 12,52 C12,18 42,4 72,12 C88,16 97,28 100,34 C103,28 112,16 128,12 C158,4 188,18 188,52 C188,115 100,170 100,170 Z"
+                fill="url(#heartFoilGrad)"
+                stroke="url(#heartGoldBorder)"
+                strokeWidth="3.5"
+                strokeLinejoin="round"
+                filter="url(#glowFoil)"
+              />
+
+              {/* Gloss Arc Reflection on Top-Left Cusp */}
+              <path
+                d="M40,32 C58,22 75,26 84,38 C75,44 58,42 42,56 C34,48 35,38 40,32 Z"
+                fill="url(#heartHighlight)"
+              />
+
+              {/* Soft curved foil reflection lines */}
+              <ellipse
+                cx="65"
+                cy="60"
+                rx="28"
+                ry="16"
+                transform="rotate(-30 65 60)"
+                fill="rgba(255, 255, 255, 0.35)"
+              />
+
+              {/* Sparkle Stars on Heart Balloon */}
+              <text x="100" y="105" textAnchor="middle" fontSize="38" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.4))">
+                💖
+              </text>
+            </svg>
+
+            {/* Balloon Tie Knot */}
             <div
               style={{
-                width: '18px',
+                width: '16px',
                 height: '10px',
-                background: '#e11d48',
+                background: '#be123c',
                 borderRadius: '3px 3px 6px 6px',
-                marginTop: '-3px'
+                marginTop: '-4px',
+                border: '1px solid #F6D58A'
               }}
             />
 
-            {/* Curly Gold Balloon Ribbon String */}
-            <svg viewBox="0 0 24 70" style={{ width: '24px', height: '70px', display: 'block' }}>
+            {/* Curly Gold Ribbon String */}
+            <svg viewBox="0 0 24 60" style={{ width: '24px', height: '60px', display: 'block' }}>
               <path
-                d="M12 0 Q22 25 12 45 T12 70"
+                d="M12 0 Q22 20 12 38 T12 60"
                 fill="none"
                 stroke="#F6D58A"
-                strokeWidth="2.5"
+                strokeWidth="2.8"
                 strokeLinecap="round"
               />
             </svg>
@@ -403,13 +438,13 @@ export const BalloonScene = ({ onNext }) => {
           {/* Action Tap Badge */}
           <div
             style={{
-              marginTop: '10px',
+              marginTop: '8px',
               background: 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,240,245,0.95))',
               padding: '10px 28px',
               borderRadius: '999px',
               color: '#9D1238',
               fontWeight: 800,
-              fontSize: 'clamp(0.95rem, 2vw, 1.2rem)',
+              fontSize: 'clamp(0.92rem, 2vw, 1.15rem)',
               boxShadow: '0 12px 35px rgba(0,0,0,0.45)',
               border: '2px solid rgba(246, 213, 138, 0.9)',
               display: 'inline-flex',
