@@ -181,14 +181,15 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
                 border: '1.5px solid rgba(246, 213, 138, 0.65)',
                 borderRadius: '16px',
                 padding: 'clamp(8px, 1.8vw, 12px)',
-                textAlign: 'left',
+                textAlign: 'center',
                 boxShadow: '0 4px 14px rgba(0,0,0,0.04)',
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'center',
                 gap: '4px'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                 <div
                   style={{
                     width: '28px',
@@ -208,7 +209,7 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
                 </h4>
               </div>
 
-              <p style={{ margin: 0, fontSize: '0.74rem', color: '#475569', lineHeight: 1.45 }}>
+              <p style={{ margin: 0, fontSize: '0.74rem', color: '#475569', lineHeight: 1.45, textAlign: 'center' }}>
                 {b.text}
               </p>
             </div>

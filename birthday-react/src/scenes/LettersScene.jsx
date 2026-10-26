@@ -242,7 +242,7 @@ export const LettersScene = ({ onNext }) => {
                 {currentMeta.seal}
               </div>
 
-              <div style={{ textAlign: 'left' }}>
+              <div style={{ textAlign: 'center' }}>
                 <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#9D1238', display: 'block' }}>
                   {currentMeta.chapter}
                 </span>
@@ -267,7 +267,7 @@ export const LettersScene = ({ onNext }) => {
               margin: '6px 0',
               fontWeight: 450,
               letterSpacing: '0.01em',
-              textAlign: 'left'
+              textAlign: 'center'
             }}
           >
             {currentLetterText}

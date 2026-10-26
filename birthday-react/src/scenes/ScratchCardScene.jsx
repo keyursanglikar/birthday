@@ -348,11 +348,14 @@ export const ScratchCardScene = ({ onNext, onRestart }) => {
                       : '0 6px 18px rgba(0,0,0,0.06)',
                     cursor: isClaimed ? 'default' : 'pointer',
                     transition: 'all 0.25s ease',
-                    textAlign: 'left',
-                    position: 'relative'
+                    textAlign: 'center',
+                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                     <div
                       style={{
                         width: '46px',
