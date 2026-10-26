@@ -74,6 +74,8 @@ export const CollegeScene = ({ onNext }) => {
       <img
         src="/college.jpg"
         alt="Dnyanshree College Campus"
+        loading="eager"
+        decoding="async"
         style={{
           position: 'absolute',
           inset: 0,

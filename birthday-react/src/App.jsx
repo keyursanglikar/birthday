@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { StoryProgress } from './components/StoryProgress';
 import { ParticleCanvas } from './components/ParticleCanvas';
 import { MusicPlayer } from './components/MusicPlayer';
+import { preloadImages } from './utils/imagePreloader';
 
 // Import All Scenes in Story Order
 import { IntroScene } from './scenes/IntroScene';               // 1: Tap to Begin
@@ -59,6 +60,11 @@ export default function App() {
 
   const CurrentScene = scenes[sceneIndex];
   const isVideoScene = sceneIndex === 15; // CinematicVideoScene
+
+  useEffect(() => {
+    // Fast background preloading for all scenes
+    preloadImages();
+  }, []);
 
   const changeScene = (nextIdx) => {
     if (isTransitioningRef.current) return;

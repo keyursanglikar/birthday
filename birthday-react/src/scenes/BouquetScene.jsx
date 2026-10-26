@@ -291,6 +291,8 @@ export const BouquetScene = ({ onNext }) => {
           <img
             src="/bouquet-real.jpg"
             alt="Rose Bouquet"
+            loading="eager"
+            decoding="async"
             style={{
               width: '100%',
               height: '100%',
