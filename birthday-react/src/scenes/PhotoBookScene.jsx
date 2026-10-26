@@ -479,7 +479,7 @@ export const PhotoBookScene = ({ onNext }) => {
         {/* Bottom Pointer & Luxury Button */}
         <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {hasCompletedTour && (
-            <NextPointer label="Tap below to read romantic letters" />
+            <NextPointer label="Tap below to continue to see letters" />
           )}
 
           <button
@@ -494,7 +494,7 @@ export const PhotoBookScene = ({ onNext }) => {
               opacity: hasCompletedTour ? 1 : 0.65
             }}
           >
-            {hasCompletedTour ? 'Continue to Romantic Letters 💌 ➜' : 'Flipping through our memories... 📖'}
+            {hasCompletedTour ? 'Continue to see letters 💌 ➜' : 'Flipping through our memories... 📖'}
           </button>
         </div>
       </div>
