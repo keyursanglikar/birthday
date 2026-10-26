@@ -5,7 +5,7 @@ import { CartoonBoy } from '../components/CartoonBoy';
 import { CartoonGirl } from '../components/CartoonGirl';
 import { sounds } from '../components/SoundManager';
 import confetti from 'canvas-confetti';
-import { Sparkles, Heart, RotateCcw, PartyPopper } from 'lucide-react';
+import { Sparkles, Heart, RotateCcw, PartyPopper, ArrowDown } from 'lucide-react';
 
 export const FinaleScene = ({ onNext, onRestart }) => {
   const containerRef = useRef(null);
@@ -258,23 +258,59 @@ export const FinaleScene = ({ onNext, onRestart }) => {
           </div>
 
           {/* DELICIOUS 3-TIER ROYAL BIRTHDAY CAKE */}
-          <div
-            onClick={handleBlowCandles}
-            style={{
-              cursor: 'pointer',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              padding: 'clamp(10px, 2vw, 16px)',
-              background: 'radial-gradient(circle, rgba(254,243,199,0.5) 0%, rgba(255,255,255,0.85) 100%)',
-              borderRadius: '24px',
-              border: '2px solid rgba(246, 213, 138, 0.7)',
-              boxShadow: '0 12px 35px rgba(246, 213, 138, 0.35)',
-              transition: 'transform 0.25s ease'
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          >
+          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {/* Animated Pointing Arrow Guide before candles are blown */}
+            {!candlesBlown && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-42px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  zIndex: 20,
+                  animation: 'bounceArrow 1.4s infinite'
+                }}
+              >
+                <div
+                  style={{
+                    background: 'linear-gradient(135deg, #9D1238, #be123c)',
+                    color: '#ffffff',
+                    padding: '4px 12px',
+                    borderRadius: '999px',
+                    fontSize: '0.74rem',
+                    fontWeight: 700,
+                    boxShadow: '0 4px 14px rgba(157, 18, 56, 0.45)',
+                    whiteSpace: 'nowrap',
+                    letterSpacing: '0.03em',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}
+                >
+                  <span>Tap cake to blow candles! 🎂</span>
+                </div>
+                <ArrowDown size={18} color="#9D1238" style={{ marginTop: '2px', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
+              </div>
+            )}
+
+            <div
+              onClick={handleBlowCandles}
+              style={{
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: 'clamp(10px, 2vw, 16px)',
+                background: 'radial-gradient(circle, rgba(254,243,199,0.5) 0%, rgba(255,255,255,0.85) 100%)',
+                borderRadius: '24px',
+                border: '2px solid rgba(246, 213, 138, 0.7)',
+                boxShadow: candlesBlown ? '0 8px 25px rgba(21, 128, 61, 0.25)' : '0 12px 35px rgba(246, 213, 138, 0.35)',
+                transition: 'transform 0.25s ease'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            >
             {/* Candle Flames */}
             <div
               style={{
@@ -368,8 +404,9 @@ export const FinaleScene = ({ onNext, onRestart }) => {
               )}
             </div>
           </div>
+        </div>
 
-          {/* SAYALI PORTRAIT */}
+        {/* SAYALI PORTRAIT */}
           <div
             style={{
               display: 'flex',
