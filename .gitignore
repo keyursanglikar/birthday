@@ -1,0 +1,6 @@
+node_modules/
+birthday-react/node_modules/
+dist/
+birthday-react/dist/
+.DS_Store
+*.log

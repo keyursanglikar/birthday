@@ -1,0 +1,269 @@
+/* Romantic Cinema Theme & Palette */
+:root {
+  --rose-red: #9D1238;
+  --romantic-pink: #FFB6CB;
+  --blush: #FFF0F5;
+  --champagne-gold: #F6D58A;
+  --deep-burgundy: #351021;
+  --warm-sunset: #FF9A76;
+  --dark-night: #0e0514;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure smooth cross-device viewport handling (Android, iOS Safari, macOS, Windows) */
+html, body {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh;
+  background: #09030c;
+  overflow: hidden;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #fff;
+  touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% 50%, #20081a 0%, #09030c 100%);
+  padding: 0;
+  margin: 0;
+}
+
+/* Full-Screen Theater Outer Wrapper with iOS Safe Area insets */
+.stage-outer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  background: #000;
+  overflow: hidden;
+}
+
+/* Responsive Adaptive Container for All Devices */
+.stage-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--deep-burgundy);
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  flex-direction: column;
+
+  /* Double Royal Gold Border with Soft Inner Crimson & Gold Bloom */
+  border: 3.5px solid rgba(246, 213, 138, 0.75);
+  outline: 1.5px solid rgba(157, 18, 56, 0.6);
+  outline-offset: -6px;
+  box-shadow: 
+    inset 0 0 40px rgba(157, 18, 56, 0.55),
+    inset 0 0 15px rgba(246, 213, 138, 0.3),
+    0 0 35px rgba(0, 0, 0, 0.95);
+}
+
+/* 1. Mobile Phones (Android, iPhone SE, iPhone 12/13/14/15/16 Pro, Samsung Galaxy) */
+@media screen and (max-width: 600px), screen and (orientation: portrait) and (max-width: 600px) {
+  .stage-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    border: 2px solid rgba(246, 213, 138, 0.65);
+    outline: 1px solid rgba(157, 18, 56, 0.45);
+    outline-offset: -4px;
+    border-radius: 0;
+  }
+}
+
+/* 2. Tablets (iPad Mini, iPad Air, iPad Pro, Android Tabs in Portrait) */
+@media screen and (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+  .stage-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    border: 3px solid rgba(246, 213, 138, 0.65);
+    outline: 1.5px solid rgba(157, 18, 56, 0.5);
+    outline-offset: -6px;
+  }
+}
+
+/* 3. Landscape Tablets & Foldables (iPad landscape, Galaxy Fold unfolded) */
+@media screen and (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
+  .stage-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    border: 3px solid rgba(246, 213, 138, 0.65);
+    outline: 1.5px solid rgba(157, 18, 56, 0.5);
+    outline-offset: -6px;
+  }
+}
+
+/* 4. Desktops, MacBooks & Laptops (Full Widescreen 16:9 / 16:10 Presentation) */
+@media screen and (min-width: 1025px) {
+  .stage-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    border: 4px solid rgba(246, 213, 138, 0.65);
+    outline: 2px solid rgba(157, 18, 56, 0.6);
+    outline-offset: -8px;
+    box-shadow: inset 0 0 60px rgba(157, 18, 56, 0.5), 0 0 50px rgba(0, 0, 0, 0.95);
+  }
+}
+
+.script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+/* Golden Luxury Button */
+.btn-gold {
+  background: linear-gradient(135deg, #F6D58A 0%, #d4af37 50%, #aa8214 100%);
+  color: #351021;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(246, 213, 138, 0.45), 0 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(246, 213, 138, 0.65);
+}
+
+.btn-cinema {
+  border: 0;
+  border-radius: 40px;
+  padding: 14px 34px;
+  font: 600 16px 'Poppins', sans-serif;
+  letter-spacing: 0.3px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--rose-red) 0%, var(--warm-sunset) 100%);
+  box-shadow: 0 8px 24px rgba(157, 18, 56, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-cinema:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 32px rgba(157, 18, 56, 0.75), 0 0 20px rgba(246, 213, 138, 0.4);
+}
+
+.btn-cinema:disabled, .btn-gold:disabled {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  opacity: 0.65 !important;
+  filter: none !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.btn-cinema:active {
+  transform: scale(0.97);
+}
+
+/* Bouncing Arrow Guide Keyframes */
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.next-pointer-container {
+  will-change: transform;
+}
+
+/* Glass control buttons */
+.glass-ctrl {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(14, 5, 20, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.glass-ctrl:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(246, 213, 138, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(246, 213, 138, 0.5);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(246, 213, 138, 0.8);
+}
