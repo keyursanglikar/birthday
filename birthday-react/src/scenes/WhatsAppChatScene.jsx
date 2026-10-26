@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { sounds } from '../components/SoundManager';
 import confetti from 'canvas-confetti';
-import { Phone, Video, MoreVertical, Send, CheckCheck, Sun, Moon, Smile, Paperclip, Camera, Mic } from 'lucide-react';
+import { Phone, Video, MoreVertical, Send, CheckCheck, Sun, Moon, Smile, Paperclip, Camera, Mic, ArrowDown, Sparkles } from 'lucide-react';
 import { CONFIG } from '../config/storyConfig';
 
 export const WhatsAppChatScene = ({ onNext }) => {
@@ -343,6 +343,42 @@ export const WhatsAppChatScene = ({ onNext }) => {
           <div ref={messagesEndRef} />
         </div>
 
+        {/* Floating Instruction Banner pointing directly to Send Button when unlocked */}
+        {canProceed && (
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              paddingRight: '12px',
+              paddingBottom: '4px',
+              background: 'linear-gradient(180deg, transparent, rgba(11, 20, 26, 0.95))',
+              zIndex: 20
+            }}
+          >
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                color: '#ffffff',
+                padding: '5px 12px',
+                borderRadius: '999px',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                boxShadow: '0 4px 14px rgba(37, 211, 102, 0.45)',
+                animation: 'pulse 1.8s infinite'
+              }}
+            >
+              <span>Tap the green Send button to continue ➜</span>
+              <ArrowDown size={14} style={{ animation: 'bounce 1s infinite' }} />
+            </div>
+          </div>
+        )}
+
         {/* WhatsApp Mobile Chat Input Bar */}
         <div
           style={{
@@ -351,7 +387,8 @@ export const WhatsAppChatScene = ({ onNext }) => {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            position: 'relative'
           }}
         >
           {/* Input Capsule with Emoji and Attachment Icons */}
@@ -378,37 +415,42 @@ export const WhatsAppChatScene = ({ onNext }) => {
                 textOverflow: 'ellipsis'
               }}
             >
-              {canProceed ? '💖 Full day conversation unlocked!' : 'Durvank & Sayali chatting...'}
+              {canProceed ? '👉 Click the green Send button!' : 'Durvank & Sayali chatting...'}
             </span>
             <Paperclip size={17} color="#8696a0" style={{ cursor: 'pointer', flexShrink: 0 }} />
           </div>
 
-          {/* WhatsApp Green Send Button */}
-          <button
-            onClick={onNext}
-            disabled={!canProceed}
-            style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '50%',
-              background: canProceed
-                ? 'linear-gradient(135deg, #25D366, #128C7E)'
-                : '#2a3942',
-              border: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              cursor: canProceed ? 'pointer' : 'not-allowed',
-              opacity: canProceed ? 1 : 0.45,
-              boxShadow: canProceed ? '0 4px 15px rgba(37, 211, 102, 0.4)' : 'none',
-              transition: 'all 0.25s ease',
-              flexShrink: 0
-            }}
-            title={canProceed ? "Continue to our sunset drive" : "Chat in progress"}
-          >
-            <Send size={16} />
-          </button>
+          {/* WhatsApp Green Send Button with animated attention pulse */}
+          <div style={{ position: 'relative' }}>
+            <button
+              onClick={onNext}
+              disabled={!canProceed}
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                background: canProceed
+                  ? 'linear-gradient(135deg, #25D366, #128C7E)'
+                  : '#2a3942',
+                border: canProceed ? '2px solid #ffffff' : 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+                cursor: canProceed ? 'pointer' : 'not-allowed',
+                opacity: canProceed ? 1 : 0.45,
+                boxShadow: canProceed
+                  ? '0 0 20px rgba(37, 211, 102, 0.8), 0 4px 15px rgba(0,0,0,0.4)'
+                  : 'none',
+                transform: canProceed ? 'scale(1.08)' : 'scale(1)',
+                transition: 'all 0.25s ease',
+                flexShrink: 0
+              }}
+              title={canProceed ? "Tap to continue to our sunset drive" : "Chat in progress"}
+            >
+              <Send size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
