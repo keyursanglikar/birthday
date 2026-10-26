@@ -38,11 +38,11 @@ export const LettersScene = ({ onNext }) => {
     }
   ];
 
-  // Auto flip pages every 5.5 seconds
+  // Auto flip pages every 20 seconds to give ample reading time
   useEffect(() => {
     const timer = setInterval(() => {
       handleNextPage();
-    }, 5500);
+    }, 20000);
 
     return () => clearInterval(timer);
   }, [activePageIndex]);
@@ -255,16 +255,19 @@ export const LettersScene = ({ onNext }) => {
             </span>
           </div>
 
-          {/* Letter Handwriting Body */}
+          {/* Letter Body - Clean, Simple, Highly Readable Typography */}
           <div
-            className="handwriting"
             style={{
-              fontSize: 'clamp(17px, 2.1vw, 21px)',
-              lineHeight: '28px',
+              fontFamily: "'Poppins', system-ui, -apple-system, sans-serif",
+              fontSize: 'clamp(14px, 1.8vw, 16px)',
+              lineHeight: 1.68,
               color: '#3b1d24',
               whiteSpace: 'pre-wrap',
               minHeight: 'clamp(150px, 28vh, 230px)',
-              margin: '4px 0'
+              margin: '6px 0',
+              fontWeight: 450,
+              letterSpacing: '0.01em',
+              textAlign: 'left'
             }}
           >
             {currentLetterText}
