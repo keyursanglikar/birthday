@@ -251,12 +251,52 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
             alignItems: 'center',
             gap: '8px',
             cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(246, 213, 138, 0.45)'
+            boxShadow: '0 8px 24px rgba(246, 213, 138, 0.45)',
+            marginBottom: '14px'
           }}
         >
           <RotateCcw size={18} />
           <span>Replay Our Birthday Celebration Story 🎬</span>
         </button>
+
+        {/* Animated Developer & Designer Credit Tag */}
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '4px 16px',
+            borderRadius: '999px',
+            background: 'rgba(255, 255, 255, 0.75)',
+            border: '1px solid rgba(246, 213, 138, 0.65)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+          }}
+        >
+          <Sparkles size={13} color="#9D1238" style={{ animation: 'spin 3s linear infinite' }} />
+          <span
+            style={{
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              color: '#64748b',
+              letterSpacing: '0.04em'
+            }}
+          >
+            Developed & Designed with 💖 by{' '}
+            <b
+              style={{
+                color: '#9D1238',
+                fontWeight: 700,
+                background: 'linear-gradient(90deg, #9D1238, #e11d48, #9D1238)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'inline-block'
+              }}
+            >
+              Keyur Sanglikar
+            </b>
+          </span>
+          <Sparkles size={13} color="#9D1238" style={{ animation: 'spin 3s linear infinite' }} />
+        </div>
       </div>
     </div>
   );
