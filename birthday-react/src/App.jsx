@@ -24,6 +24,7 @@ import { PhotoBookScene } from './scenes/PhotoBookScene';           // 16: Memor
 import { LettersScene } from './scenes/LettersScene';               // 17: Romantic Letters (Mail Envelope)
 import { FinaleScene } from './scenes/FinaleScene';                 // 18: Grand Birthday Celebration Finale
 import { ScratchCardScene } from './scenes/ScratchCardScene';       // 19: Scratch Card & 4 Claimable Gifts
+import { GratitudeBlessingScene } from './scenes/GratitudeBlessingScene'; // 20: Heartfelt Blessings & Gratitude
 
 export default function App() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -50,7 +51,8 @@ export default function App() {
     PhotoBookScene,         // 15 (Photo Collage Auto-flip Book)
     LettersScene,           // 16 (Mail Envelope Scene)
     FinaleScene,            // 17 (Birthday Celebration Stage)
-    ScratchCardScene        // 18 (Scratch Card & 4 Gift Claim)
+    ScratchCardScene,       // 18 (Scratch Card & 4 Gift Claim)
+    GratitudeBlessingScene  // 19 (Blessings, Gratitude & Forever Signoff)
   ];
 
   const CurrentScene = scenes[sceneIndex];

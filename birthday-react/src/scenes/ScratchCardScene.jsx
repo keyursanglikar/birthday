@@ -2,10 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { sounds } from '../components/SoundManager';
 import confetti from 'canvas-confetti';
-import { Gift, Sparkles, CheckCircle2, RotateCcw } from 'lucide-react';
+import { Gift, Sparkles, CheckCircle2, RotateCcw, ArrowRight } from 'lucide-react';
 import { CONFIG } from '../config/storyConfig';
+import { NextPointer } from '../components/NextPointer';
 
-export const ScratchCardScene = ({ onRestart }) => {
+export const ScratchCardScene = ({ onNext, onRestart }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const [isScratched, setIsScratched] = useState(false);
@@ -439,24 +440,49 @@ export const ScratchCardScene = ({ onRestart }) => {
           </button>
         )}
 
-        {/* Restart our story button */}
+        {/* After claiming gift: forward to Special Gratitude & Blessing section */}
         {isClaimed && (
-          <div style={{ marginTop: '16px' }}>
+          <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+            {onNext && (
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <NextPointer direction="right" label="Tap here for final blessings" pulse={true} />
+                <button
+                  onClick={onNext}
+                  className="btn-primary"
+                  style={{
+                    padding: '12px 28px',
+                    fontSize: '0.98rem',
+                    fontWeight: 700,
+                    borderRadius: '999px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    cursor: 'pointer',
+                    boxShadow: '0 8px 24px rgba(157, 18, 56, 0.35)',
+                    animation: 'pulse 2s infinite'
+                  }}
+                >
+                  Special Blessings & Gratitude For Sayali 💖 <ArrowRight size={18} />
+                </button>
+              </div>
+            )}
+
             <button
               onClick={onRestart}
-              className="btn-gold"
               style={{
-                padding: '12px 32px',
-                fontSize: '0.98rem',
-                borderRadius: '999px',
+                background: 'transparent',
+                border: 'none',
+                color: '#64748b',
+                fontSize: '0.85rem',
+                fontWeight: 600,
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                cursor: 'pointer'
+                gap: '6px',
+                cursor: 'pointer',
+                textDecoration: 'underline'
               }}
             >
-              <RotateCcw size={18} />
-              Replay Our Entire Birthday Story 🎬
+              <RotateCcw size={14} /> Replay From Beginning
             </button>
           </div>
         )}
