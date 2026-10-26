@@ -77,7 +77,7 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 'clamp(12px, 2.5vw, 24px)',
+        padding: 'clamp(8px, 2vw, 20px)',
         overflow: 'hidden'
       }}
     >
@@ -99,11 +99,13 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
         ref={cardRef}
         style={{
           width: 'min(96%, 720px)',
+          maxHeight: '94vh',
+          overflowY: 'auto',
           background: 'linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 248, 0.96))',
-          borderRadius: 'clamp(22px, 3.5vw, 34px)',
+          borderRadius: 'clamp(20px, 3.5vw, 32px)',
           border: '2px solid rgba(246, 213, 138, 0.85)',
           boxShadow: '0 30px 90px rgba(0, 0, 0, 0.85), 0 0 45px rgba(246, 213, 138, 0.35)',
-          padding: 'clamp(18px, 3.2vw, 32px)',
+          padding: 'clamp(14px, 2.8vw, 28px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -165,10 +167,10 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '12px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: 'clamp(8px, 1.8vw, 12px)',
             width: '100%',
-            marginBottom: '20px'
+            marginBottom: 'clamp(10px, 2vw, 18px)'
           }}
         >
           {blessings.map((b, idx) => (
@@ -177,21 +179,21 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
               style={{
                 background: '#ffffff',
                 border: '1.5px solid rgba(246, 213, 138, 0.65)',
-                borderRadius: '18px',
-                padding: '14px',
+                borderRadius: '16px',
+                padding: 'clamp(8px, 1.8vw, 12px)',
                 textAlign: 'left',
-                boxShadow: '0 6px 18px rgba(0,0,0,0.05)',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.04)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '6px'
+                gap: '4px'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div
                   style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '10px',
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '8px',
                     background: '#fff1f2',
                     display: 'flex',
                     alignItems: 'center',
@@ -201,12 +203,12 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
                 >
                   {b.icon}
                 </div>
-                <h4 style={{ margin: 0, fontSize: '0.88rem', color: '#1e293b', fontWeight: 700, lineHeight: 1.3 }}>
+                <h4 style={{ margin: 0, fontSize: '0.82rem', color: '#1e293b', fontWeight: 700, lineHeight: 1.3 }}>
                   {b.title}
                 </h4>
               </div>
 
-              <p style={{ margin: 0, fontSize: '0.78rem', color: '#475569', lineHeight: 1.5 }}>
+              <p style={{ margin: 0, fontSize: '0.74rem', color: '#475569', lineHeight: 1.45 }}>
                 {b.text}
               </p>
             </div>
@@ -219,19 +221,19 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '16px',
-            marginBottom: '18px'
+            gap: '12px',
+            marginBottom: 'clamp(10px, 2vw, 16px)'
           }}
         >
-          <div style={{ width: '42px', height: '42px', borderRadius: '50%', overflow: 'hidden', border: '2px solid #F6D58A', padding: '2px', background: '#fff' }}>
+          <div style={{ width: '38px', height: '38px', borderRadius: '50%', overflow: 'hidden', border: '2px solid #F6D58A', padding: '2px', background: '#fff', flexShrink: 0 }}>
             <img src="/boy-face.png" alt="Durvank" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
 
-          <span className="script" style={{ fontSize: '1.6rem', color: '#9D1238', fontWeight: 700 }}>
+          <span className="script" style={{ fontSize: 'clamp(1.2rem, 3.2vw, 1.6rem)', color: '#9D1238', fontWeight: 700 }}>
             Durvank & Sayali • Forever & Always
           </span>
 
-          <div style={{ width: '42px', height: '42px', borderRadius: '50%', overflow: 'hidden', border: '2px solid #F6D58A', padding: '2px', background: '#fff' }}>
+          <div style={{ width: '38px', height: '38px', borderRadius: '50%', overflow: 'hidden', border: '2px solid #F6D58A', padding: '2px', background: '#fff', flexShrink: 0 }}>
             <img src="/girl-face.png" alt="Sayali" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
         </div>
