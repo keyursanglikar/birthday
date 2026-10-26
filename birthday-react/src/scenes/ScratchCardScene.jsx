@@ -213,11 +213,13 @@ export const ScratchCardScene = ({ onNext, onRestart }) => {
       <div
         style={{
           width: 'min(96%, 740px)',
+          maxHeight: '94vh',
+          overflowY: 'auto',
           background: 'linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 248, 0.96))',
-          borderRadius: 'clamp(22px, 3.5vw, 32px)',
+          borderRadius: 'clamp(20px, 3.5vw, 30px)',
           border: '2px solid rgba(246, 213, 138, 0.85)',
           boxShadow: '0 30px 90px rgba(0, 0, 0, 0.85), 0 0 45px rgba(246, 213, 138, 0.35)',
-          padding: 'clamp(14px, 2.8vw, 26px)',
+          padding: 'clamp(12px, 2.5vw, 24px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -321,10 +323,13 @@ export const ScratchCardScene = ({ onNext, onRestart }) => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '14px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: 'clamp(8px, 1.8vw, 14px)',
               width: '100%',
-              marginBottom: '20px'
+              marginBottom: '14px',
+              maxHeight: 'clamp(280px, 48vh, 420px)',
+              overflowY: 'auto',
+              padding: '4px'
             }}
           >
             {gifts.map((g) => {
