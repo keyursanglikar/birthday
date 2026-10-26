@@ -127,27 +127,27 @@ export const BalloonScene = ({ onNext }) => {
         <span style={{ fontSize: '1.4rem' }}>🌹</span>
       </div>
 
-      {/* Top Floating Instruction Badge */}
+      {/* Floating Counter Badge (Instruction text hidden per user request) */}
       <div
         style={{
           position: 'absolute',
           top: '20px',
           zIndex: 20,
-          background: 'rgba(255, 255, 255, 0.96)',
-          padding: '8px 24px',
+          background: 'rgba(255, 255, 255, 0.95)',
+          padding: '6px 18px',
           borderRadius: '999px',
           border: '1.5px solid rgba(246, 213, 138, 0.9)',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(246, 213, 138, 0.4)',
+          boxShadow: '0 8px 25px rgba(0,0,0,0.45)',
           display: 'inline-flex',
           alignItems: 'center',
           gap: '8px',
           color: '#9D1238',
           fontWeight: 700,
-          fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)'
+          fontSize: 'clamp(0.82rem, 1.6vw, 0.95rem)'
         }}
       >
-        <span>🌹 Pop all 6 Balloons to unlock the Grand Heart Surprise!</span>
-        <span style={{ background: '#9D1238', color: '#fff', borderRadius: '50%', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem' }}>
+        <span>🎈 Birthday Balloons</span>
+        <span style={{ background: '#9D1238', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.78rem' }}>
           {poppedIds.length}/{CONFIG.gifts.length}
         </span>
       </div>
