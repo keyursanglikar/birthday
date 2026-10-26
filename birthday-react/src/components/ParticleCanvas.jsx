@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-export const ParticleCanvas = ({ enabled = true, count = 45 }) => {
+export const ParticleCanvas = ({ enabled = true, count = 55 }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -21,54 +21,171 @@ export const ParticleCanvas = ({ enabled = true, count = 45 }) => {
     window.addEventListener('resize', handleResize);
 
     const roseColors = ['#e11d48', '#be123c', '#9f1239', '#fb7185', '#fda4af', '#F6D58A', '#ffe4e6'];
-    const particles = [];
+    const fireworkColors = ['#F6D58A', '#FFB6CB', '#ff4d6d', '#38bdf8', '#a855f7', '#fbbf24', '#ffffff'];
 
+    // 1. Regular Particles: Rose petals, Floating hearts, 4-Point Sparkle Stars, Glimmering Diamonds
+    const particles = [];
     for (let i = 0; i < count; i++) {
-      const typeRoll = Math.random();
+      const roll = Math.random();
       let type = 'rosePetal';
-      if (typeRoll < 0.2) type = 'sparkle';
-      else if (typeRoll < 0.35) type = 'miniFlower';
+      if (roll < 0.25) type = 'star';
+      else if (roll < 0.45) type = 'heart';
+      else if (roll < 0.65) type = 'diamond';
+      else if (roll < 0.8) type = 'rosePetal';
+      else type = 'miniFlower';
 
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 4 + 2.5,
-        speedX: (Math.random() - 0.4) * 0.7,
-        speedY: Math.random() * 0.9 + 0.4, // Gentle downward drift like real falling petals
+        size: Math.random() * 3.5 + 2,
+        speedX: (Math.random() - 0.45) * 0.7,
+        speedY: type === 'heart' ? -(Math.random() * 0.6 + 0.3) : Math.random() * 0.8 + 0.4,
         color: roseColors[Math.floor(Math.random() * roseColors.length)],
         opacity: Math.random() * 0.65 + 0.35,
         rotation: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.03,
-        swaySpeed: Math.random() * 0.03 + 0.01,
+        rotSpeed: (Math.random() - 0.5) * 0.035,
+        swaySpeed: Math.random() * 0.03 + 0.015,
         swayVal: Math.random() * Math.PI * 2,
+        shimmerVal: Math.random() * Math.PI * 2,
+        shimmerSpeed: Math.random() * 0.06 + 0.03,
         type
       });
     }
 
+    // 2. Ambient Gentle Fireworks System (Fires periodically in background)
+    const fireworkSparks = [];
+    const spawnFirework = () => {
+      const fx = Math.random() * (width * 0.8) + width * 0.1;
+      const fy = Math.random() * (height * 0.45) + height * 0.1;
+      const sparkCount = Math.floor(Math.random() * 18) + 16;
+      const fwColor = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+
+      for (let s = 0; s < sparkCount; s++) {
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 2.8 + 1.2;
+        fireworkSparks.push({
+          x: fx,
+          y: fy,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity,
+          color: fwColor,
+          alpha: 1,
+          decay: Math.random() * 0.018 + 0.012,
+          size: Math.random() * 2.5 + 1.2
+        });
+      }
+    };
+
+    let lastFwTime = Date.now();
+
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
+      // Periodically trigger a gentle romantic background firework burst every 3.2 seconds
+      if (Date.now() - lastFwTime > 3200) {
+        spawnFirework();
+        lastFwTime = Date.now();
+      }
+
+      // Draw & Update Firework Sparks
+      for (let i = fireworkSparks.length - 1; i >= 0; i--) {
+        const spark = fireworkSparks[i];
+        spark.x += spark.vx;
+        spark.y += spark.vy;
+        spark.vy += 0.035; // gentle gravity
+        spark.alpha -= spark.decay;
+
+        if (spark.alpha <= 0) {
+          fireworkSparks.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, spark.alpha);
+        ctx.fillStyle = spark.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = spark.color;
+        ctx.beginPath();
+        ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Render Floating Animated Elements
       particles.forEach((p) => {
         p.swayVal += p.swaySpeed;
+        p.shimmerVal += p.shimmerSpeed;
         p.x += p.speedX + Math.sin(p.swayVal) * 0.6;
         p.y += p.speedY;
         p.rotation += p.rotSpeed;
 
         // Wrap around smoothly
-        if (p.y > height + 25) {
+        if (p.speedY > 0 && p.y > height + 25) {
           p.y = -25;
+          p.x = Math.random() * width;
+        } else if (p.speedY < 0 && p.y < -25) {
+          p.y = height + 25;
           p.x = Math.random() * width;
         }
         if (p.x < -30) p.x = width + 20;
         if (p.x > width + 30) p.x = -20;
 
+        // Shimmering brightness
+        const dynamicAlpha = Math.max(0.2, Math.min(1, p.opacity * (0.7 + 0.3 * Math.sin(p.shimmerVal))));
+
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rotation);
-        ctx.globalAlpha = p.opacity;
+        ctx.globalAlpha = dynamicAlpha;
 
-        if (p.type === 'rosePetal') {
-          // Curving realistic velvety red rose petal shape
+        if (p.type === 'star') {
+          // 4-Point Diamond Sparkle Star
+          ctx.fillStyle = '#F6D58A';
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = '#F6D58A';
+          const r1 = p.size * 2.2;
+          const r2 = p.size * 0.45;
+          ctx.beginPath();
+          for (let pt = 0; pt < 4; pt++) {
+            ctx.lineTo(Math.cos(pt * Math.PI * 0.5) * r1, Math.sin(pt * Math.PI * 0.5) * r1);
+            ctx.lineTo(Math.cos(pt * Math.PI * 0.5 + Math.PI * 0.25) * r2, Math.sin(pt * Math.PI * 0.5 + Math.PI * 0.25) * r2);
+          }
+          ctx.closePath();
+          ctx.fill();
+        } else if (p.type === 'heart') {
+          // Delicate Floating Pink/Rose Heart
+          ctx.fillStyle = '#ff6b8b';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#ff6b8b';
+          const hs = p.size * 0.9;
+          ctx.beginPath();
+          ctx.moveTo(0, hs * 0.3);
+          ctx.bezierCurveTo(-hs, -hs * 0.8, -hs * 1.8, hs * 0.2, 0, hs * 1.8);
+          ctx.bezierCurveTo(hs * 1.8, hs * 0.2, hs, -hs * 0.8, 0, hs * 0.3);
+          ctx.fill();
+        } else if (p.type === 'diamond') {
+          // Sparkling Faceted Diamond Rhombus
+          ctx.fillStyle = '#ffffff';
+          ctx.shadowBlur = 14;
+          ctx.shadowColor = '#38bdf8';
+          const ds = p.size * 1.6;
+          ctx.beginPath();
+          ctx.moveTo(0, -ds);
+          ctx.lineTo(ds * 0.7, 0);
+          ctx.lineTo(0, ds);
+          ctx.lineTo(-ds * 0.7, 0);
+          ctx.closePath();
+          ctx.fill();
+
+          // Internal jewel facet line
+          ctx.strokeStyle = 'rgba(56, 189, 248, 0.6)';
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(-ds * 0.7, 0);
+          ctx.lineTo(ds * 0.7, 0);
+          ctx.stroke();
+        } else if (p.type === 'rosePetal') {
+          // Realistic Curved Velvety Red Rose Petal
           ctx.fillStyle = p.color;
           ctx.beginPath();
           ctx.moveTo(0, -p.size * 2);
@@ -76,15 +193,15 @@ export const ParticleCanvas = ({ enabled = true, count = 45 }) => {
           ctx.bezierCurveTo(-p.size * 2.4, p.size, -p.size * 2, -p.size * 2, 0, -p.size * 2);
           ctx.fill();
 
-          // Subtle inner petal fold highlight
+          // Fold highlight
           ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
           ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(0, -p.size * 1.5);
           ctx.quadraticCurveTo(p.size * 0.6, 0, 0, p.size * 1.5);
           ctx.stroke();
-        } else if (p.type === 'miniFlower') {
-          // Mini 5-petal blossom
+        } else {
+          // Mini 5-petal flower blossom
           ctx.fillStyle = p.color;
           for (let petal = 0; petal < 5; petal++) {
             ctx.rotate((Math.PI * 2) / 5);
@@ -92,20 +209,10 @@ export const ParticleCanvas = ({ enabled = true, count = 45 }) => {
             ctx.ellipse(0, p.size * 1.1, p.size * 0.7, p.size * 1.2, 0, 0, Math.PI * 2);
             ctx.fill();
           }
-          // Golden center pistil
           ctx.fillStyle = '#F6D58A';
           ctx.beginPath();
           ctx.arc(0, 0, p.size * 0.45, 0, Math.PI * 2);
           ctx.fill();
-        } else {
-          // Warm golden fairy sparkle
-          ctx.fillStyle = p.color;
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = '#F6D58A';
-          ctx.beginPath();
-          ctx.arc(0, 0, p.size * 0.8, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.shadowBlur = 0;
         }
 
         ctx.restore();
