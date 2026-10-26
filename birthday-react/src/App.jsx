@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { StoryProgress } from './components/StoryProgress';
 import { ParticleCanvas } from './components/ParticleCanvas';
 import { MusicPlayer } from './components/MusicPlayer';
+import { HeartBorderOverlay } from './components/HeartBorderOverlay';
 import { preloadImages } from './utils/imagePreloader';
 
 // Import All Scenes in Story Order
@@ -114,6 +115,9 @@ export default function App() {
   return (
     <div className="stage-outer">
       <div className="stage-container">
+        {/* Decorative Romantic Heart Border Frame */}
+        <HeartBorderOverlay />
+
         {/* Particle Canvas Overlay */}
         <ParticleCanvas enabled={true} count={35} />
 
