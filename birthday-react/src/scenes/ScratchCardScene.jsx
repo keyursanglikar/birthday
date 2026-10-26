@@ -191,8 +191,8 @@ export const ScratchCardScene = ({ onRestart }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 'clamp(16px, 3vw, 28px)',
-        overflowY: 'auto'
+        padding: 'clamp(10px, 2.2vw, 22px)',
+        overflow: 'hidden'
       }}
     >
       {/* Golden Stage Glow */}
@@ -211,12 +211,12 @@ export const ScratchCardScene = ({ onRestart }) => {
       {/* Main Card Container */}
       <div
         style={{
-          width: 'min(95%, 760px)',
+          width: 'min(96%, 740px)',
           background: 'linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 248, 0.96))',
-          borderRadius: '32px',
+          borderRadius: 'clamp(22px, 3.5vw, 32px)',
           border: '2px solid rgba(246, 213, 138, 0.85)',
           boxShadow: '0 30px 90px rgba(0, 0, 0, 0.85), 0 0 45px rgba(246, 213, 138, 0.35)',
-          padding: 'clamp(20px, 3.5vw, 36px)',
+          padding: 'clamp(14px, 2.8vw, 26px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

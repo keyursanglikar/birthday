@@ -141,21 +141,19 @@ export const LettersScene = ({ onNext }) => {
       <div
         ref={cardRef}
         style={{
-          width: 'min(95%, 680px)',
-          maxHeight: '94vh',
+          width: 'min(96%, 660px)',
           background: 'linear-gradient(155deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 248, 0.96))',
-          borderRadius: '32px',
+          borderRadius: 'clamp(22px, 3.5vw, 32px)',
           border: '2px solid rgba(246, 213, 138, 0.85)',
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.85), 0 0 45px rgba(246, 213, 138, 0.35)',
-          padding: 'clamp(16px, 3vw, 28px)',
+          padding: 'clamp(12px, 2.5vw, 24px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           position: 'relative',
           perspective: '1200px',
           zIndex: 10,
-          backdropFilter: 'blur(16px)',
-          overflowY: 'auto'
+          backdropFilter: 'blur(16px)'
         }}
       >
         {/* Top Header Ribbon & Indicators */}

@@ -126,20 +126,18 @@ export const FinaleScene = ({ onNext, onRestart }) => {
       <div
         ref={cardRef}
         style={{
-          width: 'min(94%, 780px)',
-          maxHeight: '92vh',
+          width: 'min(94%, 740px)',
           background: 'linear-gradient(175deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 245, 248, 0.95) 100%)',
-          borderRadius: '36px',
+          borderRadius: 'clamp(24px, 4vw, 36px)',
           border: '2px solid rgba(246, 213, 138, 0.85)',
           boxShadow: '0 30px 90px rgba(0, 0, 0, 0.8), 0 0 55px rgba(246, 213, 138, 0.35)',
-          padding: 'clamp(20px, 3.5vw, 36px)',
+          padding: 'clamp(14px, 2.8vw, 28px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
           zIndex: 10,
-          backdropFilter: 'blur(16px)',
-          overflowY: 'auto'
+          backdropFilter: 'blur(16px)'
         }}
       >
         {/* Crown & Royal Birthday Banner */}
@@ -431,11 +429,11 @@ export const FinaleScene = ({ onNext, onRestart }) => {
         {/* Heartfelt Birthday Message */}
         <p
           style={{
-            fontSize: 'clamp(0.88rem, 1.8vw, 1.08rem)',
+            fontSize: 'clamp(0.82rem, 1.6vw, 0.98rem)',
             color: '#351021',
-            lineHeight: 1.6,
-            maxWidth: '620px',
-            margin: '0 0 20px 0'
+            lineHeight: 1.5,
+            maxWidth: '600px',
+            margin: '0 0 14px 0'
           }}
         >
           May your life always be filled with boundless laughter, infinite warmth, sweet adventures,
