@@ -170,7 +170,7 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
             gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
             gap: 'clamp(8px, 1.8vw, 12px)',
             width: '100%',
-            marginBottom: 'clamp(10px, 2vw, 18px)'
+            marginBottom: 'clamp(12px, 2.2vw, 18px)'
           }}
         >
           {blessings.map((b, idx) => (
@@ -180,38 +180,42 @@ export const GratitudeBlessingScene = ({ onRestart }) => {
                 background: '#ffffff',
                 border: '1.5px solid rgba(246, 213, 138, 0.65)',
                 borderRadius: '16px',
-                padding: 'clamp(8px, 1.8vw, 12px)',
+                padding: 'clamp(10px, 2vw, 14px)',
                 textAlign: 'center',
                 boxShadow: '0 4px 14px rgba(0,0,0,0.04)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '4px'
+                justifyContent: 'flex-start',
+                gap: '8px'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                <div
-                  style={{
-                    width: '28px',
-                    height: '28px',
-                    borderRadius: '8px',
-                    background: '#fff1f2',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  {b.icon}
-                </div>
-                <h4 style={{ margin: 0, fontSize: '0.82rem', color: '#1e293b', fontWeight: 700, lineHeight: 1.3 }}>
-                  {b.title}
-                </h4>
+              {/* Perfectly centered icon emblem */}
+              <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
+                  background: '#fff1f2',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 2px 8px rgba(157, 18, 56, 0.1)',
+                  flexShrink: 0
+                }}
+              >
+                {b.icon}
               </div>
 
-              <p style={{ margin: 0, fontSize: '0.74rem', color: '#475569', lineHeight: 1.45, textAlign: 'center' }}>
-                {b.text}
-              </p>
+              {/* Title & Description with harmonic vertical rhythm */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+                <h4 style={{ margin: 0, fontSize: '0.86rem', color: '#1e293b', fontWeight: 700, lineHeight: 1.35, textAlign: 'center' }}>
+                  {b.title}
+                </h4>
+                <p style={{ margin: 0, fontSize: '0.75rem', color: '#475569', lineHeight: 1.5, textAlign: 'center' }}>
+                  {b.text}
+                </p>
+              </div>
             </div>
           ))}
         </div>

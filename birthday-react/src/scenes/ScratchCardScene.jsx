@@ -355,30 +355,31 @@ export const ScratchCardScene = ({ onNext, onRestart }) => {
                     alignItems: 'center'
                   }}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '10px', width: '100%' }}>
                     <div
                       style={{
-                        width: '46px',
-                        height: '46px',
-                        borderRadius: '14px',
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '16px',
                         background: `${g.color}15`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '1.8rem'
+                        fontSize: '1.9rem',
+                        boxShadow: `0 4px 12px ${g.color}25`
                       }}
                     >
                       {g.icon}
                     </div>
-                    <div>
-                      <h4 style={{ margin: 0, fontSize: '0.98rem', color: '#1e293b', fontWeight: 700 }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                      <h4 style={{ margin: 0, fontSize: '0.98rem', color: '#1e293b', fontWeight: 700, textAlign: 'center' }}>
                         {g.title}
                       </h4>
-                      <span style={{ fontSize: '0.75rem', color: g.color, fontWeight: 700 }}>Exclusive Gift</span>
+                      <span style={{ fontSize: '0.74rem', color: g.color, fontWeight: 700, letterSpacing: '0.04em' }}>Exclusive Gift</span>
                     </div>
                   </div>
 
-                  <p style={{ margin: '0 0 12px 0', fontSize: '0.82rem', color: '#64748b', lineHeight: 1.5 }}>
+                  <p style={{ margin: '0 0 14px 0', fontSize: '0.82rem', color: '#64748b', lineHeight: 1.55, textAlign: 'center' }}>
                     {g.desc}
                   </p>
 
