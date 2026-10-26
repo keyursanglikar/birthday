@@ -8,9 +8,7 @@ import { NextPointer } from '../components/NextPointer';
 export const HandshakeScene = ({ onNext }) => {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
-  const leftArmRef = useRef(null);
-  const rightArmRef = useRef(null);
-  const joinedHandsRef = useRef(null);
+  const photoFrameRef = useRef(null);
   const pulseHeartRef = useRef(null);
   const [canProceed, setCanProceed] = useState(false);
 
@@ -23,18 +21,18 @@ export const HandshakeScene = ({ onNext }) => {
           sounds.chime();
           sounds.tada();
           confetti({
-            particleCount: 70,
+            particleCount: 75,
             spread: 80,
             origin: { y: 0.5 },
             colors: ['#F6D58A', '#FFB6CB', '#9D1238', '#FFFFFF']
           });
           setTimeout(() => {
             setCanProceed(true);
-          }, 1200);
+          }, 800);
         }
       });
 
-      // 1. Initial Stage Card Entrance
+      // 1. Initial Card Entrance
       tl.from(cardRef.current, {
         scale: 0.9,
         opacity: 0,
@@ -43,49 +41,27 @@ export const HandshakeScene = ({ onNext }) => {
         ease: 'power3.out'
       })
 
-      // 2. Animated Hands Slide in toward center to clasp
-      .to(leftArmRef.current, {
-        x: 0,
-        duration: 1.4,
-        ease: 'power2.out'
-      }, "-=0.2")
-      .to(rightArmRef.current, {
-        x: 0,
-        duration: 1.4,
-        ease: 'power2.out'
-      }, "<")
+      // 2. Smooth zoom & gentle fade-in of the real holding hands photo (no sliding from sides)
+      .fromTo(photoFrameRef.current,
+        { scale: 0.95, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' },
+        "-=0.3"
+      )
 
-      // 3. Realistic Hand Clasp Up-and-Down Handshake Motion
-      .to([leftArmRef.current, rightArmRef.current], {
-        y: -14,
-        duration: 0.22,
-        repeat: 5,
-        yoyo: true,
-        ease: 'sine.inOut'
-      })
-
-      // 4. Reveal real intertwined photograph with golden warmth
-      .to(joinedHandsRef.current, {
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out'
-      }, "-=0.6")
-
-      // 5. Floating heart pop
+      // 3. Romantic Heart Pop
       .fromTo(pulseHeartRef.current,
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.6, ease: 'elastic.out(1, 0.6)' },
-        "-=0.4"
+        "-=0.3"
       );
 
-      // Continuous gentle breathing pulse on the clasped hands
-      gsap.to(joinedHandsRef.current, {
-        scale: 1.025,
-        duration: 2.2,
+      // Continuous gentle breathing pulse on the holding hands photo
+      gsap.to(photoFrameRef.current, {
+        scale: 1.02,
+        duration: 2.8,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut',
-        delay: 3
+        ease: 'sine.inOut'
       });
     }, containerRef);
 
@@ -162,8 +138,9 @@ export const HandshakeScene = ({ onNext }) => {
           <Sparkles size={15} />
         </div>
 
-        {/* ANIMATED HANDS CLASPING STAGE */}
+        {/* REAL HANDS HOLDING STAGE CONTAINER (Clean real photograph presentation) */}
         <div
+          ref={photoFrameRef}
           style={{
             width: 'min(94%, 560px)',
             height: 'clamp(210px, 38vw, 290px)',
@@ -176,93 +153,30 @@ export const HandshakeScene = ({ onNext }) => {
             background: 'linear-gradient(135deg, #1f0b15, #11040a)'
           }}
         >
-          {/* DURVANK'S APPROACHING HAND (Left side reaching in) */}
-          <div
-            ref={leftArmRef}
+          {/* REAL HOLDING HANDS PHOTOGRAPH */}
+          <img
+            src="/hands-joined.jpg"
+            alt="Real hands holding together"
+            loading="eager"
+            decoding="async"
             style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              width: '60%',
-              transform: 'translateX(-95%)',
-              zIndex: 3,
-              overflow: 'hidden'
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 45%',
+              filter: 'contrast(1.08) saturate(1.2) brightness(0.98)'
             }}
-          >
-            <img
-              src="/hands-joined.jpg"
-              alt="Durvank reaching hand"
-              style={{
-                width: '170%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'left center',
-                filter: 'brightness(0.95) saturate(1.1)'
-              }}
-            />
-          </div>
+          />
 
-          {/* SAYALI'S APPROACHING HAND (Right side reaching in) */}
+          {/* Warm Romantic Golden Sunset Overlay */}
           <div
-            ref={rightArmRef}
-            style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              right: 0,
-              width: '60%',
-              transform: 'translateX(95%)',
-              zIndex: 3,
-              overflow: 'hidden'
-            }}
-          >
-            <img
-              src="/hands-joined.jpg"
-              alt="Sayali reaching hand"
-              style={{
-                width: '170%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'right center',
-                filter: 'brightness(0.95) saturate(1.1)'
-              }}
-            />
-          </div>
-
-          {/* REVEALED REAL INTERTWINED HAND IN HAND PHOTO */}
-          <div
-            ref={joinedHandsRef}
             style={{
               position: 'absolute',
               inset: 0,
-              opacity: 0,
-              zIndex: 6,
-              transform: 'scale(1)'
+              background: 'linear-gradient(to bottom, rgba(48,12,30,0.12) 0%, rgba(246,213,138,0.2) 55%, rgba(48,12,30,0.4) 100%)',
+              pointerEvents: 'none'
             }}
-          >
-            <img
-              src="/hands-joined.jpg"
-              alt="Real hands holding together"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center 45%',
-                filter: 'contrast(1.08) saturate(1.2) brightness(0.98)'
-              }}
-            />
-
-            {/* Warm Romantic Golden Sunset Overlay */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to bottom, rgba(48,12,30,0.15) 0%, rgba(246,213,138,0.25) 55%, rgba(48,12,30,0.45) 100%)',
-                pointerEvents: 'none'
-              }}
-            />
-          </div>
+          />
 
           {/* Floating Heart Emblem */}
           <div
@@ -278,13 +192,12 @@ export const HandshakeScene = ({ onNext }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 8px 24px rgba(157, 18, 56, 0.5)',
-              border: '2px solid rgba(246, 213, 138, 0.9)',
-              fontSize: '22px',
+              boxShadow: '0 4px 15px rgba(225, 29, 72, 0.45)',
+              border: '2px solid rgba(246, 213, 138, 0.8)',
               zIndex: 10
             }}
           >
-            💖
+            <Heart size={24} color="#e11d48" fill="#e11d48" />
           </div>
         </div>
 
