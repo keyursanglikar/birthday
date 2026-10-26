@@ -118,8 +118,8 @@ export default function App() {
         {/* Decorative Romantic Heart Border Frame */}
         <HeartBorderOverlay />
 
-        {/* Particle Canvas Overlay */}
-        <ParticleCanvas enabled={true} count={35} />
+        {/* Particle Canvas Overlay - Optimized 24 high-performance elements */}
+        <ParticleCanvas enabled={true} count={24} />
 
         {/* Scene Progress Indicator - hide section number per user request */}
         {/* <StoryProgress

@@ -109,8 +109,6 @@ export const ParticleCanvas = ({ enabled = true, count = 55 }) => {
         ctx.save();
         ctx.globalAlpha = Math.max(0, spark.alpha);
         ctx.fillStyle = spark.color;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = spark.color;
         ctx.beginPath();
         ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
         ctx.fill();
@@ -152,8 +150,6 @@ export const ParticleCanvas = ({ enabled = true, count = 55 }) => {
         if (p.type === 'star') {
           // 4-Point Diamond Sparkle Star
           ctx.fillStyle = '#F6D58A';
-          ctx.shadowBlur = 12;
-          ctx.shadowColor = '#F6D58A';
           const r1 = p.size * 2.2;
           const r2 = p.size * 0.45;
           ctx.beginPath();
@@ -166,8 +162,6 @@ export const ParticleCanvas = ({ enabled = true, count = 55 }) => {
         } else if (p.type === 'heart') {
           // Delicate Floating Pink/Rose Heart
           ctx.fillStyle = '#ff6b8b';
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = '#ff6b8b';
           const hs = p.size * 0.9;
           ctx.beginPath();
           ctx.moveTo(0, hs * 0.3);
@@ -177,8 +171,6 @@ export const ParticleCanvas = ({ enabled = true, count = 55 }) => {
         } else if (p.type === 'diamond') {
           // Sparkling Faceted Diamond Rhombus
           ctx.fillStyle = '#ffffff';
-          ctx.shadowBlur = 14;
-          ctx.shadowColor = '#38bdf8';
           const ds = p.size * 1.6;
           ctx.beginPath();
           ctx.moveTo(0, -ds);
@@ -245,8 +237,6 @@ export const ParticleCanvas = ({ enabled = true, count = 55 }) => {
 
           // Butterfly Wings
           ctx.fillStyle = '#ff80bf';
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = '#ff4d94';
 
           // Left Wing
           ctx.save();
