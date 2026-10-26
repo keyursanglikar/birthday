@@ -1,4 +1,4 @@
-// Intelligent Image Preloader and Cache Manager for Instant Scene Transitions
+// Intelligent Media Preloader for Instant Images and Video Playback
 export const preloadImages = (urls = []) => {
   if (typeof window === 'undefined') return;
 
@@ -17,10 +17,21 @@ export const preloadImages = (urls = []) => {
   const schedulePreload = window.requestIdleCallback || ((cb) => setTimeout(cb, 100));
 
   schedulePreload(() => {
+    // 1. Preload key images
     targetUrls.forEach((src) => {
       const img = new Image();
       img.decoding = 'async';
       img.src = src;
     });
+
+    // 2. Warm up video buffer asynchronously in background
+    try {
+      const video = document.createElement('video');
+      video.preload = 'auto';
+      video.src = '/story-video.mp4';
+      video.load();
+    } catch (e) {
+      // Ignore background warm up errors
+    }
   });
 };

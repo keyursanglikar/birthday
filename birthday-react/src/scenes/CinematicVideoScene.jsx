@@ -113,6 +113,8 @@ export const CinematicVideoScene = ({ onNext }) => {
         <video
           ref={videoRef}
           src="/story-video.mp4"
+          poster="/video-thumb.jpg"
+          preload="auto"
           playsInline
           autoPlay
           muted
