@@ -17,14 +17,15 @@ import { MeetingScene } from './scenes/MeetingScene';           // 9: Meet in Ka
 import { BirthdayBlastScene } from './scenes/BirthdayBlastScene'; // 10: Confetti, Fireworks & Wishes
 import { BalloonScene } from './scenes/BalloonScene';           // 11: 6 Balloons & Gifts
 import { HandshakeScene } from './scenes/HandshakeScene';       // 12: Real Handshake
-import { WhatsAppChatScene } from './scenes/WhatsAppChatScene';   // 13: Day to Night WhatsApp Chatting
-import { DriveScene } from './scenes/DriveScene';               // 14: Sunset Drive & Chai Hangout
-import { CinematicVideoScene } from './scenes/CinematicVideoScene'; // 15: Cinematic Video Memory (Muted)
-import { PhotoBookScene } from './scenes/PhotoBookScene';           // 16: Memory Scrapbook with Auto Flip
-import { LettersScene } from './scenes/LettersScene';               // 17: Romantic Letters (Mail Envelope)
-import { FinaleScene } from './scenes/FinaleScene';                 // 18: Grand Birthday Celebration Finale
-import { ScratchCardScene } from './scenes/ScratchCardScene';       // 19: Scratch Card & 4 Claimable Gifts
-import { GratitudeBlessingScene } from './scenes/GratitudeBlessingScene'; // 20: Heartfelt Blessings & Gratitude
+import { BouquetScene } from './scenes/BouquetScene';           // 13: Flowers Bouquet Offering
+import { WhatsAppChatScene } from './scenes/WhatsAppChatScene';   // 14: Day to Night WhatsApp Chatting
+import { DriveScene } from './scenes/DriveScene';               // 15: Sunset Drive & Chai Hangout
+import { CinematicVideoScene } from './scenes/CinematicVideoScene'; // 16: Cinematic Video Memory (Muted)
+import { PhotoBookScene } from './scenes/PhotoBookScene';           // 17: Memory Scrapbook with Auto Flip
+import { LettersScene } from './scenes/LettersScene';               // 18: Romantic Letters (Mail Envelope)
+import { FinaleScene } from './scenes/FinaleScene';                 // 19: Grand Birthday Celebration Finale
+import { ScratchCardScene } from './scenes/ScratchCardScene';       // 20: Scratch Card & 4 Claimable Gifts
+import { GratitudeBlessingScene } from './scenes/GratitudeBlessingScene'; // 21: Heartfelt Blessings & Gratitude
 
 export default function App() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -45,18 +46,19 @@ export default function App() {
     BirthdayBlastScene,     // 9
     BalloonScene,           // 10
     HandshakeScene,         // 11
-    WhatsAppChatScene,      // 12 (Day to Night WhatsApp Chat)
-    DriveScene,             // 13
-    CinematicVideoScene,    // 14 (Video Scene)
-    PhotoBookScene,         // 15 (Photo Collage Auto-flip Book)
-    LettersScene,           // 16 (Mail Envelope Scene)
-    FinaleScene,            // 17 (Birthday Celebration Stage)
-    ScratchCardScene,       // 18 (Scratch Card & 4 Gift Claim)
-    GratitudeBlessingScene  // 19 (Blessings, Gratitude & Forever Signoff)
+    BouquetScene,           // 12 (Flower Bouquet Giving)
+    WhatsAppChatScene,      // 13 (Day to Night WhatsApp Chat)
+    DriveScene,             // 14
+    CinematicVideoScene,    // 15 (Video Scene)
+    PhotoBookScene,         // 16 (Photo Collage Auto-flip Book)
+    LettersScene,           // 17 (Mail Envelope Scene)
+    FinaleScene,            // 18 (Birthday Celebration Stage)
+    ScratchCardScene,       // 19 (Scratch Card & 4 Gift Claim)
+    GratitudeBlessingScene  // 20 (Blessings, Gratitude & Forever Signoff)
   ];
 
   const CurrentScene = scenes[sceneIndex];
-  const isVideoScene = sceneIndex === 14; // CinematicVideoScene
+  const isVideoScene = sceneIndex === 15; // CinematicVideoScene
 
   const changeScene = (nextIdx) => {
     if (isTransitioningRef.current) return;
